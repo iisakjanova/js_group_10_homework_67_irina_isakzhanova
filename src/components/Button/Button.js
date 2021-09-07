@@ -1,7 +1,7 @@
 import React from 'react';
 import './Button.css';
 
-const Button = ({value, big}) => {
+const Button = ({value, big, onClick}) => {
     const classes = ['Button'];
 
     if (big) {
@@ -9,7 +9,12 @@ const Button = ({value, big}) => {
     }
 
     return (
-        <button className={classes.join(' ')}>{value}</button>
+        <button
+            className={classes.join(' ')}
+            onClick={onClick}
+        >
+            {value}
+        </button>
     );
 };
 

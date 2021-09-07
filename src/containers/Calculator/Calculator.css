@@ -13,6 +13,10 @@
     border: 1px solid grey;
 }
 
+.Display p {
+    text-align: center;
+}
+
 .Buttons {
     display: flex;
     flex-wrap: wrap;
