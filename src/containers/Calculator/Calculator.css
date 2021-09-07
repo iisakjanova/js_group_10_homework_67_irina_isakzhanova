@@ -1,0 +1,24 @@
+.Title {
+    text-align: center;
+}
+
+.Calculator {
+    width: 285px;
+    margin: 20px auto;
+}
+
+.Display {
+    margin: 7px;
+    height: 80px;
+    border: 1px solid grey;
+}
+
+.Buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.Button {
+    margin: 5px;
+}

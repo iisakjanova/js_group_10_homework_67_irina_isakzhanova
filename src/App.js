@@ -1,6 +1,8 @@
+import Calculator from "./containers/Calculator/Calculator";
+
 const App = () => (
     <div className="App">
-      Hello
+      <Calculator />
     </div>
 );
 
