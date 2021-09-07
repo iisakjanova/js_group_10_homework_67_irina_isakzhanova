@@ -11,18 +11,29 @@ const Calculator = () => {
     const counter = useSelector(state => state.counter);
     const total = useSelector(state => state.total);
 
+    const checkButtonValue = value => {
+        switch (value) {
+            case 'AC':
+                return 'CLEAR';
+            case '<':
+                return 'REMOVE_CHAR';
+            case '=':
+                return 'COUNT';
+            default:
+                return 'CONCAT_CHAR';
+        }
+    };
+
     const handlerClickBtn = e => {
         if (total) {
             dispatch({type: 'CLEAR'});
         }
 
         const payload = e.target.innerText;
-        dispatch({type: 'STRING_CONCAT', payload});
+        const type = checkButtonValue(payload);
+        dispatch({type, payload});
     };
 
-    const getTotal = () => {
-        dispatch({type: 'COUNT'});
-    };
 
     return (
         <>
@@ -43,7 +54,7 @@ const Calculator = () => {
                     <Button
                         value="="
                         big
-                        onClick={getTotal}
+                        onClick={handlerClickBtn}
                     />
                 </div>
             </div>
