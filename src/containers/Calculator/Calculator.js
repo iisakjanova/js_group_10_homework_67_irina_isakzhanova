@@ -25,7 +25,7 @@ const Calculator = () => {
     };
 
     const handlerClickBtn = e => {
-        if (total) {
+        if (total || total === 0) {
             dispatch({type: 'CLEAR'});
         }
 
@@ -34,14 +34,13 @@ const Calculator = () => {
         dispatch({type, payload});
     };
 
-
     return (
         <>
             <h2 className="Title">Calculator</h2>
             <div className="Calculator">
                 <div className="Display">
                     <p>{counter}</p>
-                    {total ? <p>= <b>{total}</b></p> : null}
+                    {total || total === 0 ? <p>= <b>{total}</b></p> : null}
                 </div>
                 <div className="Buttons">
                     {BUTTONS_VALUES.map(value => (
