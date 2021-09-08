@@ -4,26 +4,26 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-    if (action.type === 'CONCAT_CHAR') {
+    const concatChar = (payload) => {
         let newCounter = state.counter;
-        let newPayload = action.payload;
+        let newPayload = payload;
 
-        if (state.counter.length === 0 && isNaN(action.payload)) {
+        if (state.counter.length === 0 && isNaN(payload)) {
             newPayload = '';
         }
 
-        if (isNaN(action.payload) && isNaN(state.counter[state.counter.length - 1])) {
+        if (isNaN(payload) && isNaN(state.counter[state.counter.length - 1])) {
             newCounter = state.counter.slice(0, state.counter.length - 1);
         }
 
         return {...state, counter: newCounter + newPayload};
-    }
+    };
 
-    if (action.type === 'CLEAR') {
+    const clearState = () => {
         return {...state, counter: '', total: ''};
-    }
+    };
 
-    if (action.type === 'COUNT') {
+    const getTotal = () => {
         let newCounter = state.counter;
 
         if (isNaN(state.counter[state.counter.length - 1])) {
@@ -32,14 +32,25 @@ const reducer = (state = initialState, action) => {
 
         const total = eval(newCounter);
         return {...state, counter: newCounter, total};
-    }
+    };
 
-    if (action.type === 'REMOVE_CHAR') {
+    const removeChar = () => {
         const newCounter = state.counter.slice(0, state.counter.length - 1);
         return {...state, counter: newCounter};
     }
 
-    return state;
+    switch (action.type) {
+        case 'CONCAT_CHAR':
+            return concatChar(action.payload);
+        case 'CLEAR':
+            return clearState();
+        case 'COUNT':
+            return getTotal();
+        case 'REMOVE_CHAR':
+            return removeChar();
+        default:
+            return state;
+    }
 };
 
 export default reducer;
