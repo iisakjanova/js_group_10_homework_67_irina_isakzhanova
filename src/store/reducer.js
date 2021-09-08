@@ -7,6 +7,15 @@ const reducer = (state = initialState, action) => {
     const concatChar = (payload) => {
         let newCounter = state.counter;
         let newPayload = payload;
+        const octalParams = new RegExp(/^0\d/) ;
+
+        if (octalParams.test(state.counter + payload)) {
+            newCounter = state.counter.replace(/0/g, '');
+        }
+
+        if (payload !== '.' && isNaN(state.counter[state.counter.length - 2]) && state.counter[state.counter.length - 1] === '0') {
+            newCounter = state.counter.slice(0, state.counter.length - 1);
+        }
 
         if (state.counter.length === 0 && isNaN(payload)) {
             newPayload = '';
