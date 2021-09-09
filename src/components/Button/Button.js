@@ -1,11 +1,18 @@
 import React from 'react';
+import '../bootstrap.min.css';
 import './Button.css';
 
-const Button = ({value, big, onClick}) => {
-    const classes = ['Button'];
+const Button = ({value, onClick}) => {
+    const classes = ['Button', 'btn', ];
 
-    if (big) {
-        classes.push('BigBtn');
+    if (value === '=') {
+        classes.push('btn-primary', 'BigBtn');
+    } else if (value === 'AC') {
+        classes.push('btn-danger');
+    } else if (value === '<') {
+        classes.push('btn-info');
+    }else {
+        classes.push('btn-secondary');
     }
 
     return (

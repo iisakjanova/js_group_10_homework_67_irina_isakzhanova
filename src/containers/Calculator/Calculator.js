@@ -50,11 +50,6 @@ const Calculator = () => {
                             onClick={handlerClickBtn}
                         />
                     ))}
-                    <Button
-                        value="="
-                        big
-                        onClick={handlerClickBtn}
-                    />
                 </div>
             </div>
         </>
